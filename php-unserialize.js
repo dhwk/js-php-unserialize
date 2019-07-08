@@ -174,6 +174,10 @@ function unserialize (data) {
           readArray();
           dataoffset += 1;
           break;
+        case 'r':
+          ccount = read_until(data, dataoffset, ';');
+          dataoffset += ccount[0] + 1;
+          break;		      
         default:
           error('SyntaxError', 'Unknown / Unhandled data type(s): ' + dtype);
           break;
